@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
 
+
 class App extends React.Component {
     constructor(props) {
       super(props);
@@ -54,10 +55,10 @@ class App extends React.Component {
       
       render() {
         return (
-          <div>
+          <div id='questions'>
             <h3>Customer Question and Answer?</h3>
-              <input type="text" name={this.state.question} onChange={this.handleChange}/>
-              <button type="button" onClick={this.handleSubmit}>Ask</button>
+              <input type="text" className="input" name={this.state.question} onChange={this.handleChange}/>
+              <button type="button" className="button" onClick={this.handleSubmit}>Ask</button>
               <ul>
                 {/* {this.props.question.map(function(index, element, data){return <li>{this.state.question}</li>})} */}
                 <li>{this.state.answers}</li>

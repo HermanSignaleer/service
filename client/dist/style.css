@@ -1,0 +1,24 @@
+#questions{
+  background-color: babyblue;
+};
+
+.button {
+    background-color: rgb(76, 99, 175);
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+  };
+
+  .input[type=text] {
+    width: 1000%;
+    height: 1000%;
+    padding: 15px 20px;
+    margin: 10px 0;
+    border: 20px solid rgba(0, 4, 255, 0.397);
+    border-radius: 20px;
+  };
+
