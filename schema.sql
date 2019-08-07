@@ -9,7 +9,7 @@ CREATE TABLE Questions(
     PRIMARY KEY (id)
 );
 
-INSERT INTO Questions (question, answers) VALUES ('How do I redeem a savings that were not rewarded?','Sorry, redemptions should be rendered upon the time of puschase.');
+INSERT INTO Questions (question, answers) VALUES ('How do I redeem a savings that were not rewarded?','Sorry, redemptions should be rendered upon the time of purchase.');
 INSERT INTO Questions (question, answers) VALUES ('Why is it not possible for me to return items that were purchased on sale?', 'All sales made on items below the original price cannot be returned.');
 INSERT INTO Questions (question, answers) VALUES ('What sizes are available for the new Jordans?', 'The only available sizes are listed within the item description.');
 INSERT INTO Questions (question, answers) VALUES ('How many pairs of shoes maybe purchased at one time during sales events?', 'There is not a specified limit per customer.');

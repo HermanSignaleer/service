@@ -16,45 +16,58 @@ class App extends React.Component {
 
     componentDidMount(){
       axios.get('/Questions')
-        .then((response) => {
+      .then((response) => {
         console.log(response, "error getting data at client")
-          // this.setState({
-          //   question: response.data.question,
-          //   answers: response.data.answers
-          // })
+        // let myMap = response.data.map(function(element, index){
+        //   return <question answer={element} id={index}/>
+        // })
+        this.setState({
+          question: response.data.question,
+          answers: response.data.answers
         })
-        .catch((error) => { console.log(error)})
+      })
+      .catch((error) => { console.log(error)})
     }
-   
+    
     handleChange(event){
+      event.preventDefault();
       this.setState({
         question: event.target.value
       });
       console.log(this.state.question, 'error getting question on client')
     };
-
+    
     handleSubmit(event){
       event.preventDefault();
       axios.get('/Questions', this.state.answers)
       console.log(response)
-        .then((response) => {
-          this.setState({
-            answers: event.target.value
-          });
+      .then(() => {
+        this.setState({
+          answers: event.target.value
         });
-      };
+      });
+    };
     
     
-  
-    
-  
-    render() {
-      return (
-        <div>
-          <h3>Have a Question?</h3>
-          <input type="text" name={this.state.question} onChange={this.handleChange}/>
-          <button type="button" onClick={this.handleSubmit}>Ask</button>
-          <li>{this.state.question}</li><li>{this.state.answer}</li>
+      
+      
+      
+      render() {
+        return (
+          <div>
+            <h3>Customer Question and Answer?</h3>
+              <input type="text" name={this.state.question} onChange={this.handleChange}/>
+              <button type="button" onClick={this.handleSubmit}>Ask</button>
+              <ul>
+                {/* {this.props.question.map(function(index, element, data){return <li>{this.state.question}</li>})} */}
+                <li>{this.state.answers}</li>
+                <li>{this.state.question}</li>
+                <li>{this.state.answers}</li>
+                <li>{this.state.question}</li>
+                <li>{this.state.answers}</li>
+                <li>{this.state.question}</li>
+                <li>{this.state.answers}</li>
+              </ul>
         </div>
       )
     }
