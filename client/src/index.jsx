@@ -7,6 +7,7 @@ class App extends React.Component {
     constructor(props) {
       super(props);
       this.state = {
+        Questions: [],
         question: '',
         answers: '',
       };
@@ -16,19 +17,26 @@ class App extends React.Component {
     };
 
     componentDidMount(){
+      let questions = [];
       axios.get('/Questions')
       .then((response) => {
-        console.log(response, "error getting data at client")
-        // let myMap = response.data.map(function(element, index){
-        //   return <question answer={element} id={index}/>
-        // })
-        this.setState({
-          question: response.data.question,
-          answers: response.data.answers
+        // console.log(response, "error getting data at client")
+        response.data.map(function(element, index){
+          // console.log(element, 'howdy')
+          let tuple = [];
+          tuple.push(element.question, element.answers, element.id)
+          questions.push(tuple)
         })
+        this.setState({
+          Questions: questions,
+          question: questions.question,
+          answers: questions.answers
+        });
+        //
       })
       .catch((error) => { console.log(error)})
-    }
+      // console.log(this.props.question)
+    };
     
     handleChange(event){
       event.preventDefault();
@@ -41,10 +49,10 @@ class App extends React.Component {
     handleSubmit(event){
       event.preventDefault();
       axios.get('/Questions', this.state.answers)
-      console.log(response)
+      //console.log(response)
       .then(() => {
         this.setState({
-          answers: event.target.value
+          answers: this.props.answers
         });
       });
     };
@@ -55,12 +63,13 @@ class App extends React.Component {
       
       render() {
         return (
-          <div id='questions'>
+          <div>
+            {console.log(this.state.Questions)}
             <h3>Customer Question and Answer?</h3>
               <input type="text" className="input" name={this.state.question} onChange={this.handleChange}/>
-              <button type="button" className="button" onClick={this.handleSubmit}>Ask</button>
-              <ul>
-                {/* {this.props.question.map(function(index, element, data){return <li>{this.state.question}</li>})} */}
+              <button type="button" className="button" style={{background: "lightblue"} .style={color: "white"}} onClick={this.handleSubmit}>Ask</button>
+              <ul className='questions'>
+                <li>{this.state.question}</li>
                 <li>{this.state.answers}</li>
                 <li>{this.state.question}</li>
                 <li>{this.state.answers}</li>
