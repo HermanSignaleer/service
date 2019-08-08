@@ -27,15 +27,13 @@ class App extends React.Component {
           tuple.push(element.question, element.answers, element.id)
           questions.push(tuple)
         })
-        this.setState({
-          Questions: questions,
-          question: questions.question,
-          answers: questions.answers
-        });
-        //
+            this.setState({
+              Questions: questions
+            });
+        console.log(this.state.Questions, "questions")
+        console.log(this.props.question, "howdy")
       })
       .catch((error) => { console.log(error)})
-      // console.log(this.props.question)
     };
     
     handleChange(event){
@@ -65,20 +63,23 @@ class App extends React.Component {
         return (
           <div>
             {console.log(this.state.Questions)}
-            <h3>Customer Question and Answer?</h3>
-              <input type="text" className="input" name={this.state.question} onChange={this.handleChange}/>
-              <button type="button" className="button" style={{background: "lightblue"} .style={color: "white"}} onClick={this.handleSubmit}>Ask</button>
-              <ul className='questions'>
-                <li>{this.state.question}</li>
-                <li>{this.state.answers}</li>
-                <li>{this.state.question}</li>
-                <li>{this.state.answers}</li>
-                <li>{this.state.question}</li>
-                <li>{this.state.answers}</li>
-                <li>{this.state.question}</li>
-                <li>{this.state.answers}</li>
-              </ul>
-        </div>
+            <h1>Customer Question and Answer?</h1>
+              <input type="text" id="input" name={this.props.question} style={{width: "50%"}} onChange={this.handleChange}/>
+               <p>
+                 <button type="button" className="button" style={{background: "lightblue"} .style={color: "white"}} onClick={this.handleSubmit}>Ask</button>
+               </p>
+                {this.state.Questions.map(function(element, index){
+                  if (index < 5){
+                  return <div>
+                           <ul className='questions'>
+                             <li>{element[0]}</li>
+                             <li>{element[1]}</li>
+                           </ul>
+                         </div>
+                  }
+                 }
+                )}
+          </div>
       )
     }
   }
