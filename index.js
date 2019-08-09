@@ -4,6 +4,7 @@ const db = require('./database/index.js');
 const bodyParser = require('body-parser');
 const port = 4008;
 
+
 app.use(bodyParser.json());
 
 app.use(express.static('./client/dist'));

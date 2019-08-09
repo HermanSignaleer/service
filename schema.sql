@@ -1,6 +1,6 @@
-CREATE DATABASE QandA;
+-- CREATE DATABASE Q;
 
-USE QandA;
+-- USE Questions;
 
 CREATE TABLE Questions(
     id INT NOT NULL AUTO_INCREMENT,

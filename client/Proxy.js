@@ -3,7 +3,7 @@ const http = require('http'),
 
 
 httpProxy.createServer(function(req, res) {
-    proxy.web(req, res, { target: 'localhost: 4008' }).listen();
+    proxy.web(req, res, { target: 'localhost: 4008' }).listen(4008);
 });
 
 http.createServer(function (req, res) {
